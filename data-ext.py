@@ -1,19 +1,16 @@
 import bs4
-#from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
+try:
+    from urllib.request import Request, urlopen
+except ImportError:
+    from urllib2 import Request, urlopen
 
-from urllib.request import Request, urlopen
+target = "Black Clover"
 
-target = input("Target: ")
+def format_t(target):
+    return target.lower().replace(" ", "_")
 
-def treat_target(target):
-    for i in target:
-        if target[i] == " ":
-            target[i] == "_"
-
-print(treat_target(target))
-
-#url = 'https://manganelo.com/search/{}'.format(treated_target)
+url = 'https://manganelo.com/search/' + format_t(target)
 
 def get_update(target,url):
     req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -28,4 +25,4 @@ def get_update(target,url):
             update = manga.find("span",{"class": "text-nowrap item-time"}).text
     return update
 
-#print(get_update(target,url))
+print(get_update(target,url))
