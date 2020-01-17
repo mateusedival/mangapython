@@ -5,15 +5,22 @@ try:
 except ImportError:
     from urllib2 import Request, urlopen
 
-target = "Black Clover"
+sites = []
+with open("sites.txt") as l:
+    for link in l:
+        sites.append(link.rstrip())
+urls = dict(enumerate(sites))
+
+
 
 def format_t(target):
     return target.lower().replace(" ", "_")
 
-url = 'https://manganelo.com/search/' + format_t(target)
+def url(target,index=0):
+    return urls[index] + format_t(target)
 
-def get_update(target,url):
-    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+def get_update(target,index=0):
+    req = Request(url(target,index), headers={'User-Agent': 'Mozilla/5.0'})
     update = "None"
     uClient = urlopen(req)
     webpage = uClient.read()
@@ -25,4 +32,4 @@ def get_update(target,url):
             update = manga.find("span",{"class": "text-nowrap item-time"}).text
     return update
 
-print(get_update(target,url))
+print(url("Black Clover",0))
