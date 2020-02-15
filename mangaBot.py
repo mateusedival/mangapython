@@ -28,8 +28,6 @@ def get_update(target,index=0):
     page = soup(webpage,"html.parser")
     mangas = page.findAll("div",{"class": "search-story-item"});
     for manga in mangas:
-        if target == manga.div.a["title"]:
+        if target.lower() == manga.div.a.text.lower():
             update = manga.find("span",{"class": "text-nowrap item-time"}).text
     return update
-
-print(url("Black Clover",0))
