@@ -1,4 +1,5 @@
 import bs4
+import re
 from bs4 import BeautifulSoup as soup
 try:
     from urllib.request import Request, urlopen
@@ -14,7 +15,8 @@ urls = dict(enumerate(sites))
 
 
 def format_t(target):
-    return target.lower().replace(" ", "_")
+    return re.sub('[^A-Za-z0-9 ]+','',target.lower()).replace(" ", "_")
+
 
 def url(target,index=0):
     return urls[index] + format_t(target)

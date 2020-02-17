@@ -4,4 +4,4 @@ import mangaList as ml
 mangas = ml.read_mangas("teste.txt")
 
 for manga in mangas:
-    print(f"{manga:35} {mb.get_update(manga)}")
+    print(f"{manga:50} {mb.get_update(manga)}")
