@@ -24,12 +24,21 @@ def url(target,index=0):
 def get_update(target,index=0):
     req = Request(url(target,index), headers={'User-Agent': 'Mozilla/5.0'})
     update = "None"
+    found = False
     uClient = urlopen(req)
     webpage = uClient.read()
     uClient.close()
     page = soup(webpage,"html.parser")
     mangas = page.findAll("div",{"class": "search-story-item"});
+
     for manga in mangas:
         if target.lower() == manga.div.a.text.lower():
+            found = True
             update = manga.find("span",{"class": "text-nowrap item-time"}).text
+
+    if len(mangas) != 0 and found == False:
+        update = mangas[0].find("span",{"class": "text-nowrap item-time"}).text
+    elif len(mangas) == 0:
+        update = "Not Found"
+
     return update
