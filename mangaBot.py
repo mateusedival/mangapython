@@ -14,12 +14,15 @@ urls = dict(enumerate(sites))
 
 
 
-def format_t(target):
+def format_target(target):
     return re.sub('[^A-Za-z0-9 ]+','',target.lower()).replace(" ", "_")
+
+def formart_title(title):
+    return re.sub('[^A-Za-z0-9]+','',title.lower())
 
 
 def url(target,index=0):
-    return urls[index] + format_t(target)
+    return urls[index] + format_target(target)
 
 def get_update(target,index=0):
     req = Request(url(target,index), headers={'User-Agent': 'Mozilla/5.0'})
@@ -32,13 +35,10 @@ def get_update(target,index=0):
     mangas = page.findAll("div",{"class": "search-story-item"});
 
     for manga in mangas:
-        if target.lower() == manga.div.a.text.lower():
+        if formart_title(target) == formart_title(manga.div.a.text):
             found = True
             update = manga.find("span",{"class": "text-nowrap item-time"}).text
-
-    if len(mangas) != 0 and found == False:
-        update = mangas[0].find("span",{"class": "text-nowrap item-time"}).text
-    elif len(mangas) == 0:
+    if found == False:
         update = "Not Found"
 
     return update
