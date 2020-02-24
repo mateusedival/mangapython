@@ -1,4 +1,3 @@
-
 def read_mangas(mangas):
     l = []
     with open(mangas) as m:
