@@ -3,7 +3,7 @@ import ListFormat.mangaList as ml
 
 
 def get_updates(sites):
-    mangas = ml.read_mangas("mangas.txt")
+    mangas = ml.read_mangas("./mangas.txt")
     l = dict();
     for manga in mangas:
         l[manga] = mb.get_update(manga)
@@ -12,6 +12,6 @@ def get_updates(sites):
 
 
 if __name__ =="__main__":
-    mangas = ml.read_mangas("mangas.txt")
+    mangas = ml.read_mangas("./mangas.txt")
     for manga in mangas:
         print(f"{manga:50} {mb.get_update(manga)}")
