@@ -1,5 +1,5 @@
 def read_mangas(mangas):
-    """"Build a list with the mangas names.""
+    """Build a list with the mangas names."""
 
     l = []
     with open(mangas) as m:

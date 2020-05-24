@@ -42,5 +42,4 @@ def get_update(target,index=0):
             update = manga.find("span",{"class": "text-nowrap item-time"}).text
     if found == False:
         update = "Not Found"
-
     return update
