@@ -3,6 +3,8 @@ import ListFormat.mangaList as ml
 
 
 def get_updates(sites):
+    """Build a list of the mangas' updates."""
+
     mangas = ml.read_mangas("./mangas.txt")
     l = dict();
     for manga in mangas:

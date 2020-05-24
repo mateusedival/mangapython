@@ -10,16 +10,23 @@ with open("./sites.txt") as l:
 urls = dict(enumerate(sites))
 
 def format_target(target):
+    """Format the target to append to the url."""
     return re.sub('[^A-Za-z0-9 ]+','',target.lower()).replace(" ", "_")
 
 def formart_title(title):
+    """Format the title to be only lower letters and remove whitespaces."""
+
     return re.sub('[^A-Za-z0-9]+','',title.lower())
 
 
 def url(target,index=0):
+    """Return the target url of the index website."""
+
     return urls[index] + format_target(target)
 
 def get_update(target,index=0):
+    """Get the target last update info on the index site."""
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
     }
