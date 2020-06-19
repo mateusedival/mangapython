@@ -11,6 +11,7 @@ urls = dict(enumerate(sites))
 
 def format_target(target):
     """Format the target to append to the url."""
+
     return re.sub('[^A-Za-z0-9 ]+','',target.lower()).replace(" ", "_")
 
 def formart_title(title):

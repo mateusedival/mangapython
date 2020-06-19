@@ -1,5 +1,6 @@
 import Scraping.mangaBot as mb
 import ListFormat.mangaList as ml
+import sys
 
 
 def get_updates(sites):
