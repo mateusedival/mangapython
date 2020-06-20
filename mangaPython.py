@@ -16,6 +16,8 @@ def get_updates(sites):
 
 if __name__ =="__main__":
     mangas = ml.read_mangas("./mangas.txt")
+
+    # melhorar essa interface
     if(len(sys.argv) == 1):
         for manga in mangas:
             print(f"{manga:50} {mb.get_update(manga)}")

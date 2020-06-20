@@ -7,6 +7,8 @@ def read_mangas(mangas):
             l.append(manga.rstrip())
     return l
 
+#adicionar as docstrings que faltam
+
 def append_mangas(new_manga,mangas):
     buffer = ""
     with open(mangas, "a") as file:
@@ -23,6 +25,7 @@ def show_mangas(mangaList):
 def remove_manga(mangas,index = -1,name = "none"):
     mangaList = read_mangas(mangas)
 
+    #atualizar para ficar igual append_mangas
     if(name != "none"):
         for manga in mangaList:
             if(manga == name.rstrip()):
